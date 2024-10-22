@@ -20,32 +20,34 @@ int validArgv(char check[]){
 }
 int charValue(char c){
     c = tolower(c);
-    if(c == '1') return 1;
-    if((c >= 'a' && c <= 'c' )|| c == '2'){
+    if(isDigit(c) == 1) {
+        return (c - '0');
+    }
+    if(c >= 'a' && c <= 'c'){
         return 2;
     }
-    if((c >= 'd' && c <= 'f' )|| c == '3'){
+    if(c >= 'd' && c <= 'f'){
         return 3;
     }
-    if((c >= 'g' && c <= 'i' )|| c == '4'){
+    if(c >= 'g' && c <= 'i'){
         return 4;
     }
-    if((c >= 'j' && c <= 'l' )|| c == '5'){
+    if(c >= 'j' && c <= 'l'){
         return 5;
     }
-    if((c >= 'm' && c <= 'o' )|| c == '6'){
+    if(c >= 'm' && c <= 'o'){
         return 6;
     }
-    if((c >= 'p' && c <= 's' )|| c == '7'){
+    if(c >= 'p' && c <= 's'){
         return 7;
     }
-    if((c >= 't' && c <= 'v' )|| c == '8'){
+    if(c >= 't' && c <= 'v'){
         return 8;
     }
-    if((c >= 'w' && c <= 'z' )|| c == '9'){
+    if(c >= 'w' && c <= 'z'){
         return 9;
     }
-    if(c == '0' || c == '+'){
+    if(c == '+'){
         return 0;
     }
     return -1;
