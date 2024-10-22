@@ -68,11 +68,13 @@ int main(int argc, char *argv[]){
 
     int contacts_found = 0;
 
-    char jmeno[MAX_LENGTH];
-    char telcislo[MAX_LENGTH];
+    char name[MAX_LENGTH];
+    char telnumber[MAX_LENGTH];
     char pattern[MAX_LENGTH];
-
-    
+    if(argc > 2){
+        fprintf(stderr, "Too many arguments\n");
+        return 1;
+    }
 
     if(argc > 1){
         if (validArgv(argv[1]) == 0){
@@ -85,20 +87,20 @@ int main(int argc, char *argv[]){
     else pattern[0] = '\0';
 
 
-    while (fgets(jmeno, MAX_LENGTH, stdin) != NULL)
+    while (fgets(name, MAX_LENGTH, stdin) != NULL)
     {
-        if(fgets(telcislo, MAX_LENGTH, stdin) == NULL){
+        if(fgets(telnumber, MAX_LENGTH, stdin) == NULL){
             fprintf(stderr, "Telephone number not found");
             return 1;
         }
 
-        jmeno[strcspn(jmeno, "\n")] = '\0';
-        telcislo[strcspn(telcislo, "\n")] = '\0';
+        name[strcspn(name, "\n")] = '\0';
+        telnumber[strcspn(telnumber, "\n")] = '\0';
 
         
 
-        if(search(pattern, jmeno) || search(pattern, telcislo)== 1) {
-            fprintf(stdout, "%s, %s\n", jmeno, telcislo);
+        if(search(pattern, name) || search(pattern, telnumber)== 1) {
+            fprintf(stdout, "%s, %s\n", name, telnumber);
             contacts_found++;
         }
 
